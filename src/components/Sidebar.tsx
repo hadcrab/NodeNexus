@@ -24,18 +24,18 @@ export default function Sidebar() {
   }, [supabase]);
 
   return (
-    <aside className="w-64 bg-base-200 p-4">
+    <aside className="w-64 bg-base-200 p-6 shadow-xl h-screen">
       <nav>
-        <ul className="menu">
-          <li><Link href="/">Главная</Link></li>
+        <ul className="menu menu-compact">
+          <li className="mb-2"><Link href="/" className="text-lg hover:bg-gray-700 hover:text-white rounded">Главная</Link></li>
           {user ? (
             <>
-              <li><Link href="/notes/add">Добавить заметку</Link></li>
-              <li><Link href="/graph">Граф</Link></li>
-              <li><Link href="/about">О проекте</Link></li>
+              <li className="mb-2"><Link href="/notes/add" className="text-lg hover:bg-gray-700 hover:text-white rounded">Добавить заметку</Link></li>
+              <li className="mb-2"><Link href="/graph" className="text-lg hover:bg-gray-700 hover:text-white rounded">Граф</Link></li>
+              <li className="mb-2"><Link href="/about" className="text-lg hover:bg-gray-700 hover:text-white rounded">О проекте</Link></li>
             </>
           ) : (
-            <li><Link href="/auth">Войти</Link></li>
+            <li className="mb-2"><Link href="/auth" className="text-lg hover:bg-gray-700 hover:text-white rounded">Войти</Link></li>
           )}
         </ul>
       </nav>

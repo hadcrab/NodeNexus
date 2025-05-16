@@ -33,33 +33,33 @@ export default function AddNote() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8">
-      <h1 className="text-2xl font-bold mb-4">Добавить заметку</h1>
-      <form onSubmit={handleSubmit} className="card bg-base-200 p-6">
-        <div className="form-control">
+    <div className="max-w-md mx-auto mt-10">
+      <h1 className="text-3xl font-bold mb-6 text-center text-white">Добавить заметку</h1>
+      <form onSubmit={handleSubmit} className="card bg-base-100 p-6 shadow-xl rounded-lg">
+        <div className="form-control mb-4">
           <label className="label">
-            <span className="label-text">Заголовок</span>
+            <span className="label-text text-gray-200">Заголовок</span>
           </label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="input input-bordered"
+            className="input input-bordered bg-gray-800 text-white border-gray-700"
             required
           />
         </div>
-        <div className="form-control">
+        <div className="form-control mb-4">
           <label className="label">
-            <span className="label-text">Содержание</span>
+            <span className="label-text text-gray-200">Содержание</span>
           </label>
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="textarea textarea-bordered"
+            className="textarea textarea-bordered bg-gray-800 text-white border-gray-700 h-32"
           />
         </div>
-        {error && <p className="text-error mt-2">{error}</p>}
-        <button type="submit" className="btn btn-primary mt-4">
+        {error && <p className="text-red-400 mb-4">{error}</p>}
+        <button type="submit" className="btn btn-primary w-full">
           Сохранить
         </button>
       </form>
