@@ -1,26 +1,10 @@
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import Link from 'next/link';
 import NoteList from '@/components/NoteList';
-import { Note } from '@/types/note';
 
 export default async function Home() {
   const supabase = await createSupabaseServerClient();
   const { data: { user } } = await supabase.auth.getUser();
-
-  let notes: Note[] = [];
-  if (user) {
-    const { data, error } = await supabase
-      .from('notes')
-      .select('*')
-      .eq('user_id', user.id)
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      console.error('Error fetching notes:', error);
-      return <div className="text-red-500 p-4">Ошибка загрузки заметок</div>;
-    }
-    notes = data || [];
-  }
 
   return (
     <div className="container mx-auto py-6">
@@ -29,11 +13,7 @@ export default async function Home() {
       {user ? (
         <div>
           <h2 className="text-2xl font-bold mb-4 text-foreground">Ваши заметки</h2>
-          {notes.length > 0 ? (
-            <NoteList notes={notes} />
-          ) : (
-            <p className="text-gray-500 mb-4">Заметок пока нет.</p>
-          )}
+          <NoteList userId={user.id} />
         </div>
       ) : (
         <div className="text-center">

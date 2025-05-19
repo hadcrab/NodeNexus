@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
+import { useNoteStore } from '@/store/useNoteStore';
 
 type NoteEditorProps = {
   note?: { id: string; title: string; content: string | null };
@@ -10,6 +11,7 @@ type NoteEditorProps = {
 
 export default function NoteEditor({ note, onSave, onCancel }: NoteEditorProps) {
   const supabase = createSupabaseBrowserClient();
+  const { addNote } = useNoteStore();
   const [title, setTitle] = useState(note?.title || '');
   const [content, setContent] = useState(note?.content || '');
 
@@ -18,20 +20,9 @@ export default function NoteEditor({ note, onSave, onCancel }: NoteEditorProps) 
     if (!user) return;
 
     if (note) {
-      await supabase
-        .from('notes')
-        .update({ title, content, updated_at: new Date().toISOString() })
-        .eq('id', note.id)
-        .eq('user_id', user.id);
+      console.log('Обновление заметки пока не реализовано');
     } else {
-      await supabase.from('notes').insert({
-        user_id: user.id,
-        title,
-        content,
-        relations: [],
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-      });
+      await addNote(title, content, user.id);
     }
     onSave();
   };
