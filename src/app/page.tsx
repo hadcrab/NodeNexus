@@ -36,7 +36,6 @@ export default async function Home() {
   return (
     <div className="container mx-auto">
       <h1 className="text-4xl font-extrabold text-center mb-6 text-white">NodeNexus</h1>
-      <div className="bg-red-500 p-4 mb-4 text-white">Тест Tailwind</div>
       <p className="text-lg text-center mb-8 text-gray-300">Храните и визуализируйте свои знания с помощью графа.</p>
       {user ? (
         <div className="bg-base-100 p-6 rounded-lg shadow-xl">
