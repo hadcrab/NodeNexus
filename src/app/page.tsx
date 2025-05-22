@@ -109,6 +109,14 @@ export default function GraphPage() {
     const network = new Network(networkRef.current, data, options);
     console.log('Network initialized');
 
+    network.on('click', (params) => {
+      if (params.nodes.length > 0) {
+        const nodeId = params.nodes[0];
+        console.log('Clicked node:', nodeId);
+        router.push(`/notes/${nodeId}`); 
+      }
+    });
+
     return () => {
       network.destroy();
     };
@@ -122,10 +130,8 @@ export default function GraphPage() {
       ) : error ? (
         <p className="text-center text-red-500">{error}</p>
       ) : (
-        <div ref={networkRef} style={{ height: '600px', width: '100%' }} />
+        <div ref={networkRef} style={{ height: '500px', width: '100%' }} />
       )}
-      <div className="mt-4 text-center">
-      </div>
     </div>
   );
 }
