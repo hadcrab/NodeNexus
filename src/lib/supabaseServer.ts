@@ -17,7 +17,7 @@ export async function createSupabaseServerClient() {
               cookieStore.set(name, value, options)
             );
           } catch {
-            // Игнорируем ошибки в Server Components
+            // Нафиг оно надо
           }
         },
       },
