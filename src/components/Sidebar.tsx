@@ -31,7 +31,7 @@ export default function Sidebar() {
           {user ? (
             <>
               <li className="mb-2"><Link href="/notes/add" className="text-lg hover:bg-gray-700 hover:text-white rounded">Добавить заметку</Link></li>
-              <li className="mb-2"><Link href="/graph" className="text-lg hover:bg-gray-700 hover:text-white rounded">Граф</Link></li>
+              <li className="mb-2"><Link href="/notes/graph" className="text-lg hover:bg-gray-700 hover:text-white rounded">Граф</Link></li>
               <li className="mb-2"><Link href="/about" className="text-lg hover:bg-gray-700 hover:text-white rounded">О проекте</Link></li>
             </>
           ) : (
